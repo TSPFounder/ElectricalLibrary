@@ -6,7 +6,7 @@ using CAD;
 using SE_Library;
 using Structures;
 
-namespace Electronics
+namespace Electrical
 {
     using System.Collections.Generic;
     using System.Linq;

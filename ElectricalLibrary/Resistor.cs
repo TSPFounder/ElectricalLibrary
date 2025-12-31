@@ -6,7 +6,7 @@ using CAD;
 using SE_Library;
 using Structures;
 
-namespace Electronics
+namespace Electrical
 {
     public class Resistor :ElectricalElement
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using CAD;
 
-namespace Electronics
+namespace Electrical
 {
     public class CircuitBreaker : ElectronicComponent
     {

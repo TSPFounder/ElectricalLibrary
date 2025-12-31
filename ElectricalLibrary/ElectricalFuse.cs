@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Electronics;
 using CAD;
 
-namespace Power
+namespace Electrical
 {
     public class ElectricalFuse : ElectricalElement
     {

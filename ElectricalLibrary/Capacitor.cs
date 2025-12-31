@@ -1,6 +1,6 @@
 ﻿using CAD;
 
-namespace Electronics
+namespace Electrical
 {
     public class Capacitor : ElectricalElement
     {

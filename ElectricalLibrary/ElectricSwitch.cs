@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using CAD;
-using Power;
+//using Power;
 
-namespace Electronics
+namespace Electrical
 {
     public class ElectricSwitch : ElectricalElement
     {

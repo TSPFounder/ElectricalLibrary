@@ -6,9 +6,9 @@ using CAD;
 using SE_Library;
 using Structures;
 
-namespace Electronics
+namespace Electrical    
 {
-    public class Transistor : ElectricalElement
+    public class Transistor :   ElectricalElement
     {
         //  *****************************************************************************************
         //  DECLARATIONS

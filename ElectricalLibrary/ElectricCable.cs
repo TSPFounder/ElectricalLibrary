@@ -3,7 +3,7 @@ using SE_Library;
 using CAD;
 using Mathematics;
 
-namespace Electronics
+namespace Electrical
 {
     public class ElectricCable : ElectricalElement
     {
@@ -13,7 +13,7 @@ namespace Electronics
 
         public CAD_Dimension? Length { get; set; }
 
-        public List<ElectricWire> MyWires { get; set; } = new();
+        public List<ElectricalWire> MyWires { get; set; } = new();
 
         public ElectricalConnector? CurrentConnector { get; set; }
 

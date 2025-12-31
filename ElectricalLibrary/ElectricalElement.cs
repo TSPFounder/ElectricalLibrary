@@ -3,7 +3,7 @@ using SE_Library;
 using CAD;
 using Mathematics;
 
-namespace Electronics
+namespace Electrical
 {
     public class ElectricalElement 
     {

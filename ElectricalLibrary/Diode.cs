@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CAD;
 
-namespace Electronics
+namespace Electrical
 {
     public class Diode : ElectricalElement
     {
