@@ -1,0 +1,205 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\diode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\diode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\circuitbreaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\circuitbreaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\electricalconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\electricalconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\electronicspeed controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\electronicspeed controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\electriccable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\electriccable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\electricswitch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\electricswitch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\electronicdevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\electronicdevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\electroniccomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\electroniccomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\electricalelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\electricalelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\capacitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\capacitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\electricallibrary\\electricallibrary\\electricallibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7AF1839-5B59-1386-65D6-3F01C80119C5}|ElectricalLibrary\\ElectricalLibrary.csproj|solutionrelative:electricallibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Diode.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\Diode.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\Diode.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\Diode.cs",
+              "RelativeToolTip": "ElectricalLibrary\\Diode.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T18:33:13.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CircuitBreaker.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\CircuitBreaker.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\CircuitBreaker.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\CircuitBreaker.cs",
+              "RelativeToolTip": "ElectricalLibrary\\CircuitBreaker.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAlwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T18:32:56.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ElectricalConnector.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectricalConnector.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\ElectricalConnector.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectricalConnector.cs",
+              "RelativeToolTip": "ElectricalLibrary\\ElectricalConnector.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAlwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T18:32:25.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ElectronicSpeed Controller.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectronicSpeed Controller.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\ElectronicSpeed Controller.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectronicSpeed Controller.cs",
+              "RelativeToolTip": "ElectricalLibrary\\ElectronicSpeed Controller.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAlwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T18:31:25.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ElectricCable.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectricCable.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\ElectricCable.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectricCable.cs",
+              "RelativeToolTip": "ElectricalLibrary\\ElectricCable.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAADgvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T18:31:15.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ElectricSwitch.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectricSwitch.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\ElectricSwitch.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectricSwitch.cs",
+              "RelativeToolTip": "ElectricalLibrary\\ElectricSwitch.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAlwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T18:31:03.61Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ElectronicDevice.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectronicDevice.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\ElectronicDevice.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectronicDevice.cs",
+              "RelativeToolTip": "ElectricalLibrary\\ElectronicDevice.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAADgvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T18:30:46.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ElectronicComponent.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectronicComponent.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\ElectronicComponent.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectronicComponent.cs",
+              "RelativeToolTip": "ElectricalLibrary\\ElectronicComponent.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAlwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T18:30:30.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ElectricalElement.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectricalElement.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\ElectricalElement.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\ElectricalElement.cs",
+              "RelativeToolTip": "ElectricalLibrary\\ElectricalElement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T18:29:16.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Capacitor.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\Capacitor.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\Capacitor.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\Capacitor.cs",
+              "RelativeToolTip": "ElectricalLibrary\\Capacitor.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADgvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T16:03:07.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\Class1.cs",
+              "RelativeDocumentMoniker": "ElectricalLibrary\\Class1.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\ElectricalLibrary\\ElectricalLibrary\\ElectricalLibrary\\Class1.cs",
+              "RelativeToolTip": "ElectricalLibrary\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T15:44:09.157Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
