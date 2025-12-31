@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SystemsEngineering;
 using CAD;
-using Power;
-using MissionsNamespace;
+using SE_Library;
+using Structures;
+using CommonObjects;
 
 namespace Electronics
 {
-    public class ElectricWire : Wire
+    public class ElectricWire 
     {
         //  *****************************************************************************************
         //  DECLARATIONS

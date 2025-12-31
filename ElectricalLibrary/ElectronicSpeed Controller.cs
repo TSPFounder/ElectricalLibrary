@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mathematics;
-using SystemsEngineering;
 using CAD;
-using Structure;
-using MissionsNamespace;
-using Power;
-using Electronics;
+using SE_Library;
+using Structures;
 
-namespace Controls
+namespace Electronics
 {
-    public class ElectronicSpeed_Controller : Controller
+    public class ElectronicSpeed_Controller 
     {
         public ElectronicSpeed_Controller()
         {
@@ -24,7 +16,7 @@ namespace Controls
 
         public CAD_Parameter? MaxCurrent { get; set; }
 
-        public PrintedCircuitBoard? MyPCB { get; set; }
+        //public PrintedCircuitBoard? MyPCB { get; set; }
 
         public StructuralCase? MyCase { get; set; }
     }

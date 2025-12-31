@@ -1,14 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CAD;
+﻿using System;
 using SE_Library;
-using Structures;
+using CAD;
+using Mathematics;
 
 namespace Electronics
 {
-    public class Inductor : ElectricalElement
+    public class Magnet 
     {
         //  *****************************************************************************************
         //  DECLARATIONS
@@ -20,10 +17,10 @@ namespace Electronics
 
         //
         //  Data
-        private CAD_Parameter _NominalInductance;
+
         //
         //  Owned & Owning Objects
-
+        private ThreeDGeometry _MyGeometry;
         #endregion
         //  *****************************************************************************************
 
@@ -49,11 +46,11 @@ namespace Electronics
 
 
         //  *****************************************************************************************
-        //  INDUCTOR CONSTRUCTOR
+        //  MAGNET CONSTRUCTOR
         //
         //  ************************************************************
         #region
-        public Inductor()
+        public Magnet()
         {
 
         }
@@ -71,14 +68,14 @@ namespace Electronics
 
         //  
         //  Data
-        public CAD_Parameter NominalInductance
-        {
-            set => _NominalInductance = value;
-            get { return _NominalInductance; }
-        }
+
         //
         //  Owned & Owning Objects
-
+         public ThreeDGeometry MyGeometry
+        {
+            set => _MyGeometry = value;
+            get { return _MyGeometry; }
+        }
         #endregion
         //  *****************************************************************************************
 

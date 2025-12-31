@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using DreamWorldMakerLibrary;
-using MissionsNamespace;
-using SystemsEngineering;
+﻿using System;
+using SE_Library;
+using CAD;
+using Mathematics;
 
 namespace Electronics
 {
@@ -52,6 +52,6 @@ namespace Electronics
 
         public List<ElectricalPin> MyPins { get; set; } = new();
 
-        public DWM_Interface? MyInterface { get; set; }
+        
     }
 }

@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using SE_Library;
 using CAD;
-using MissionsNamespace;
-using Power;
-using SystemsEngineering;
+using Mathematics;
 
 namespace Electronics
 {

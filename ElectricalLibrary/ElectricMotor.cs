@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SystemsEngineering;
+using SE_Library;
 using CAD;
-using MissionsNamespace;
-using Electronics;
-using Structure;
-using Magnetics;
+using Mathematics;
 
-namespace PowerTransmission
+namespace Electronics
 {
-    public class ElectricMotor : DWM_System
+    public class ElectricMotor : SE_System
     {
         //  *****************************************************************************************
         //  DECLARATIONS

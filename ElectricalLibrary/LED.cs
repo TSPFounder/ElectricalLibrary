@@ -2,13 +2,9 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SystemsEngineering;
 using CAD;
-using Data;
-using MissionsNamespace;
-using DreamWorldMakerLibrary;
-using SystemsEngineering;
-using Structure;
+using SE_Library;
+using Structures;
 
 namespace Electronics
 {
