@@ -21,6 +21,12 @@ namespace Electrical
         //
         //  Data
         private CAD_Parameter _NominalResistance;
+        /// <summary>Minimum resistance value (e.g., 1 Ohm).</summary>
+        private CAD_Parameter _MinResistance;
+        /// <summary>Maximum resistance value (e.g., 10M Ohm).</summary>
+        private CAD_Parameter _MaxResistance;
+        /// <summary>Tolerance of the resistor (e.g., ±1%).</summary>
+        private CAD_Parameter _Tolerance;
         //
         //  Owned & Owning Objects
 
@@ -75,6 +81,27 @@ namespace Electrical
         {
             set => _NominalResistance = value;
             get { return _NominalResistance; }
+        }
+        //
+        //  Minimum Resistance (e.g., 1 Ohm)
+        public CAD_Parameter MinResistance
+        {
+            set => _MinResistance = value;
+            get { return _MinResistance; }
+        }
+        //
+        //  Maximum Resistance (e.g., 10M Ohm)
+        public CAD_Parameter MaxResistance
+        {
+            set => _MaxResistance = value;
+            get { return _MaxResistance; }
+        }
+        //
+        //  Tolerance (e.g., ±1%)
+        public CAD_Parameter Tolerance
+        {
+            set => _Tolerance = value;
+            get { return _Tolerance; }
         }
         //
         //  Owned & Owning Objects
