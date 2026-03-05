@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 using System.Text.Json;
 using CAD;
+using SE_Library;
+using Electronics;
 
-namespace Electrical
+namespace Power
 {
-    public class ElectricalConnector : ElectricalElement
+    public class PowerDistributionBoard : SE_System
     {
         //  ****************************************************************************************
         //  INITIALIZATIONS
@@ -21,46 +23,11 @@ namespace Electrical
         //
         //  ************************************************************
         #region
-        public enum ConnectorType
+        public enum PDBTypeEnum
         {
-            USB = 0,
-            HDMI,
-            DisplayPort,
-            MiniDisplayPort,
-            DVI,
-            CompositeVideo,
-            VGA,
-            BNC,
-            F_Connector,
-            RJ_45,
-            RJ_11,
-            DB_9,
-            DB_25,
-            DIN,
-            TRS,
-            PowerBarrel,
-            XT30,
-            XT60,
-            Deans,
-            Anderson,
-            JST,
-            Other
-        }
-
-        public enum USB_ConnectorType
-        {
-            USB_A = 0,
-            USB_B,
-            MiniA,
-            MiniB,
-            MicroA,
-            MicroB,
-            MicroB_SuperSpeed,
-            USB_C,
-            USB_3_0_A_SS,
-            USB_3_0_B_SS,
-            USB_3_0_MicroB_SS,
-            None,
+            Integrated = 0,     //  PDB built into frame
+            Standalone,         //  Dedicated PDB board
+            Stackable,          //  Flight controller stack form factor
             Other
         }
         #endregion
@@ -68,12 +35,19 @@ namespace Electrical
 
 
         //  *****************************************************************************************
-        //  ELECTRICALCONNECTOR CONSTRUCTOR
+        //  POWERDISTRIBUTIONBOARD CONSTRUCTOR
         //
         //  ************************************************************
         #region
-        public ElectricalConnector()
+        public PowerDistributionBoard()
         {
+            //  Parameter Types
+            MaxInputVoltage.MyParameterType = CAD_Parameter.ParameterType.Double;
+            MaxContinuousCurrent.MyParameterType = CAD_Parameter.ParameterType.Double;
+            MaxCurrentPerOutput.MyParameterType = CAD_Parameter.ParameterType.Double;
+            BECVoltage.MyParameterType = CAD_Parameter.ParameterType.Double;
+            BECCurrent.MyParameterType = CAD_Parameter.ParameterType.Double;
+            Weight.MyParameterType = CAD_Parameter.ParameterType.Double;
         }
         #endregion
         //  *****************************************************************************************
@@ -88,19 +62,42 @@ namespace Electrical
         //  Identification
         public String Make { get; set; } = string.Empty;
         public String Model { get; set; } = string.Empty;
+        public String Version { get; set; } = string.Empty;
         //
-        //  Data
-        public ConnectorType MyConnectorType { get; set; }
-        public USB_ConnectorType MyUSBConnectorType { get; set; }
-        public int NumPins { get; set; }
-        public CAD_Parameter MaxCurrentRating { get; set; }    //  Amps
-        public CAD_Parameter MaxVoltageRating { get; set; }    //  Volts
-        public Boolean IsLocking { get; set; }
-        public Boolean IsWaterproof { get; set; }
+        //  Dimensions
+        public CAD_Dimension Length { get; set; }
+        public CAD_Dimension Width { get; set; }
+        public CAD_Dimension Height { get; set; }
+        public List<CAD_Dimension> MyDimensions { get; set; } = new();
+        //
+        //  Physical Properties
+        public CAD_Parameter Weight { get; set; } = new();
+        public PDBTypeEnum PDBType { get; set; }
+        //
+        //  Power Input
+        public CAD_Parameter MaxInputVoltage { get; set; } = new();         //  Volts
+        public CAD_Parameter MaxContinuousCurrent { get; set; } = new();    //  Amps
+        //
+        //  Power Outputs
+        public int NumOutputs { get; set; }
+        public CAD_Parameter MaxCurrentPerOutput { get; set; } = new();     //  Amps
+        //
+        //  BEC (Battery Eliminator Circuit)
+        public Boolean HasBEC { get; set; }
+        public CAD_Parameter BECVoltage { get; set; } = new();              //  Volts
+        public CAD_Parameter BECCurrent { get; set; } = new();              //  Amps
+        //
+        //  Sensors
+        public Boolean HasCurrentSensor { get; set; }
+        public Boolean HasVoltageSensor { get; set; }
+        //
+        //  Mounting
+        public List<CAD_Hole> MountingHoles { get; set; } = new();
         //
         //  Owned & Owning Objects
-        public ElectricalPin CurrentPin { get; set; }
-        public List<ElectricalPin> MyPins { get; set; } = new();
+        public Battery CurrentBattery { get; set; }
+        public ElectronicSpeed_Controller CurrentESC { get; set; }
+        public List<ElectronicSpeed_Controller> MyESCs { get; set; } = new();
         #endregion
         //  *****************************************************************************************
 
@@ -118,9 +115,9 @@ namespace Electrical
         }
         //
         //  From JSON
-        public static ElectricalConnector? FromJson(string json)
+        public static PowerDistributionBoard? FromJson(string json)
         {
-            return JsonSerializer.Deserialize<ElectricalConnector>(json);
+            return JsonSerializer.Deserialize<PowerDistributionBoard>(json);
         }
         #endregion
         //  *****************************************************************************************

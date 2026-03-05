@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.Text.Json;
 using CAD;
 using SE_Library;
-using Structures;
+using CommonObjects;
 
 namespace Electrical
 {

@@ -2,10 +2,12 @@
 using System.Text.Json;
 using CAD;
 using SE_Library;
+using Structures;
+using Power;
 
-namespace Power
+namespace Electronics
 {
-    public class Battery : SE_System
+    public class ElectronicSpeed_Controller : SE_System
     {
         //  ****************************************************************************************
         //  INITIALIZATIONS
@@ -22,14 +24,15 @@ namespace Power
         //
         //  ************************************************************
         #region
-        public enum Battery_TypeEnum
+        public enum ESCProtocolTypeEnum
         {
-            Lipo = 0,
-            LeadAcid,
-            NiCad,
-            NMH,
-            LiIon,
-            LiFe,
+            PWM = 0,
+            Oneshot125,
+            Oneshot42,
+            Multishot,
+            DSHOT150,
+            DSHOT300,
+            DSHOT600,
             Other
         }
         #endregion
@@ -37,26 +40,12 @@ namespace Power
 
 
         //  *****************************************************************************************
-        //  BATTERY CONSTRUCTOR
+        //  ELECTRONICSPEED_CONTROLLER CONSTRUCTOR
         //
         //  ************************************************************
         #region
-        public Battery()
+        public ElectronicSpeed_Controller()
         {
-            //  Parameter Types
-            Weight.MyParameterType = CAD_Parameter.ParameterType.Double;
-            PanelLeadGauge.MyParameterType = CAD_Parameter.ParameterType.String;
-            ChargeLevel.MyParameterType = CAD_Parameter.ParameterType.Double;
-            MaxCurrent.MyParameterType = CAD_Parameter.ParameterType.Double;
-            Capacity.MyParameterType = CAD_Parameter.ParameterType.Double;
-            MaxDischargeRate.MyParameterType = CAD_Parameter.ParameterType.Double;
-            MaxChargeRate.MyParameterType = CAD_Parameter.ParameterType.Double;
-            InternalResistance.MyParameterType = CAD_Parameter.ParameterType.Double;
-            NominalVoltage.MyParameterType = CAD_Parameter.ParameterType.Double;
-            FullChargeVoltage.MyParameterType = CAD_Parameter.ParameterType.Double;
-            StorageVoltage.MyParameterType = CAD_Parameter.ParameterType.Double;
-            MinOperatingTemp.MyParameterType = CAD_Parameter.ParameterType.Double;
-            MaxOperatingTemp.MyParameterType = CAD_Parameter.ParameterType.Double;
         }
         #endregion
         //  *****************************************************************************************
@@ -71,7 +60,7 @@ namespace Power
         //  Identification
         public String Make { get; set; } = string.Empty;
         public String Model { get; set; } = string.Empty;
-        public String Version { get; set; } = string.Empty;
+        public String FirmwareVersion { get; set; } = string.Empty;
         //
         //  Dimensions
         public CAD_Dimension Length { get; set; }
@@ -79,31 +68,31 @@ namespace Power
         public CAD_Dimension Height { get; set; }
         public List<CAD_Dimension> MyDimensions { get; set; } = new();
         //
-        //  States
-        public CAD_Parameter ChargeLevel { get; set; } = new();  //  %
+        //  Electrical Parameters
+        public CAD_Parameter MaxContinuousCurrent { get; set; }     //  Amps
+        public CAD_Parameter PeakCurrent { get; set; }              //  Amps
+        public CAD_Parameter MinInputVoltage { get; set; }          //  Volts
+        public CAD_Parameter MaxInputVoltage { get; set; }          //  Volts
+        public CAD_Parameter PWMFrequency { get; set; }             //  Hz
+        public CAD_Parameter SwitchingFrequency { get; set; }       //  Hz
         //
-        //  Physical Properties
-        public CAD_Parameter Weight { get; set; } = new();
-        public CAD_Parameter PanelLeadGauge { get; set; } = new();
-        public Battery_TypeEnum BatteryType { get; set; }
-        public int NumCells { get; set; }
-        public int NumChargeCycles { get; set; }
+        //  BEC
+        public Boolean HasBEC { get; set; }
+        public CAD_Parameter BECVoltage { get; set; }               //  Volts
+        public CAD_Parameter BECCurrent { get; set; }               //  Amps
         //
-        //  Performance
-        public CAD_Parameter MaxCurrent { get; set; } = new();          //  Amps
-        public CAD_Parameter Capacity { get; set; } = new();            //  mAh
-        public CAD_Parameter MaxDischargeRate { get; set; } = new();    //  C
-        public CAD_Parameter MaxChargeRate { get; set; } = new();       //  C
-        public CAD_Parameter InternalResistance { get; set; } = new();  //  mΩ
-        public CAD_Parameter NominalVoltage { get; set; } = new();      //  Volts
-        public CAD_Parameter FullChargeVoltage { get; set; } = new();   //  Volts
-        public CAD_Parameter StorageVoltage { get; set; } = new();      //  Volts
-        public CAD_Parameter MinOperatingTemp { get; set; } = new();    //  deg Celsius
-        public CAD_Parameter MaxOperatingTemp { get; set; } = new();    //  deg Celsius
+        //  Motor Compatibility
+        public int MinCellCount { get; set; }
+        public int MaxCellCount { get; set; }
+        public int NumMotorPhases { get; set; } = 3;
+        //
+        //  Control Protocol
+        public ESCProtocolTypeEnum ProtocolType { get; set; }
+        public Boolean IsOptoCoupled { get; set; }
         //
         //  Owned & Owning Objects
-        public CAD_Part DischargeConnector { get; set; }
-        public CAD_Part BalanceConnector { get; set; }
+        public StructuralCase MyCase { get; set; }
+        public PrintedCircuitBoard MyPCB { get; set; }
         #endregion
         //  *****************************************************************************************
 
@@ -114,6 +103,27 @@ namespace Power
         //  ************************************************************
         #region
         //
+        //  Is Compatible With Battery
+        public Boolean IsCompatibleWithBattery(Battery battery)
+        {
+            if (battery == null) return false;
+            return battery.NumCells >= MinCellCount && battery.NumCells <= MaxCellCount;
+        }
+        //
+        //  Is Within Current Limit
+        public Boolean IsWithinCurrentLimit(Double requestedCurrent)
+        {
+            if (MaxContinuousCurrent == null) return false;
+            if (!MaxContinuousCurrent.TryGetDouble(out double limit)) return false;
+            return requestedCurrent <= limit;
+        }
+        //
+        //  Supports Protocol
+        public Boolean SupportsProtocol(ESCProtocolTypeEnum protocol)
+        {
+            return ProtocolType == protocol;
+        }
+        //
         //  To JSON
         public string ToJson()
         {
@@ -121,9 +131,9 @@ namespace Power
         }
         //
         //  From JSON
-        public static Battery? FromJson(string json)
+        public static ElectronicSpeed_Controller? FromJson(string json)
         {
-            return JsonSerializer.Deserialize<Battery>(json);
+            return JsonSerializer.Deserialize<ElectronicSpeed_Controller>(json);
         }
         #endregion
         //  *****************************************************************************************
