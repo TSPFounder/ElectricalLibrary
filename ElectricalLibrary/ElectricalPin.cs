@@ -191,7 +191,18 @@ namespace Electrical
         //
         //  ************************************************************
         #region
-
+        //
+        //  To JSON
+        public string ToJson()
+        {
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+        }
+        //
+        //  From JSON
+        public static ElectricalPin? FromJson(string json)
+        {
+            return JsonSerializer.Deserialize<ElectricalPin>(json);
+        }
         #endregion
         //  *****************************************************************************************
 

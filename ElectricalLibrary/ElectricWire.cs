@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.Text.Json;
 using CAD;
-using SE_Library;
-using Structures;
 using CommonObjects;
 
 namespace Electronics
 {
-    public class ElectricWire 
+    public class ElectricWire
     {
         //  *****************************************************************************************
         //  DECLARATIONS
@@ -24,15 +20,15 @@ namespace Electronics
         //
         //  Data
         private int _NumberStrands;
-        private Double _TemperatureRating;
+        private Double _TemperatureRating;  //  deg Celsius
+        private CAD_Parameter _MaxCurrentRating;    //  Amps
+        private CAD_Parameter _MaxVoltageRating;    //  Volts
         private ElectricalWireTypeEnum _ElectricalWireType;
         //
         //  Dimensions
-        private Double _Length;
-        private int _Gauge;
-        private Double _InsulationThickness;
-        //
-        //  
+        private Double _Length;             //  mm
+        private int _Gauge;                 //  AWG
+        private Double _InsulationThickness; //  mm
         //
         //  Owned & Owning Objects
         private Material _ConductorMaterial;
@@ -45,7 +41,9 @@ namespace Electronics
         //  INITIALIZATIONS
         //
         //  ************************************************************
+        #region
 
+        #endregion
         //  *****************************************************************************************
 
 
@@ -53,6 +51,7 @@ namespace Electronics
         //  ENUMERATIONS
         //
         //  ************************************************************
+        #region
         public enum ElectricalWireTypeEnum
         {
             NM = 1,
@@ -67,6 +66,7 @@ namespace Electronics
             Thermocouple,
             Heating
         }
+        #endregion
         //  *****************************************************************************************
 
 
@@ -74,10 +74,13 @@ namespace Electronics
         //  ELECTRICWIRE CONSTRUCTOR
         //
         //  ************************************************************
+        #region
         public ElectricWire()
         {
-
+            _Name = string.Empty;
+            _Version = string.Empty;
         }
+        #endregion
         //  *****************************************************************************************
 
 
@@ -93,30 +96,21 @@ namespace Electronics
         public String Name
         {
             set => _Name = value;
-            get
-            {
-                return _Name;
-            }
+            get { return _Name; }
         }
         //
         //  Version
         public String Version
         {
             set => _Version = value;
-            get
-            {
-                return _Version;
-            }
+            get { return _Version; }
         }
         //
-        //  Shielding
+        //  Is Shielded
         public Boolean IsShielded
         {
             set => _IsShielded = value;
-            get
-            {
-                return _IsShielded;
-            }
+            get { return _IsShielded; }
         }
         //
         //  Data
@@ -125,30 +119,35 @@ namespace Electronics
         public int NumberStrands
         {
             set => _NumberStrands = value;
-            get
-            {
-                return _NumberStrands;
-            }
+            get { return _NumberStrands; }
         }
         //
         //  Temperature Rating
         public Double TemperatureRating
         {
             set => _TemperatureRating = value;
-            get
-            {
-                return _TemperatureRating;
-            }
+            get { return _TemperatureRating; }
         }
         //
-        //  Type
+        //  Maximum Current Rating
+        public CAD_Parameter MaxCurrentRating
+        {
+            set => _MaxCurrentRating = value;
+            get { return _MaxCurrentRating; }
+        }
+        //
+        //  Maximum Voltage Rating
+        public CAD_Parameter MaxVoltageRating
+        {
+            set => _MaxVoltageRating = value;
+            get { return _MaxVoltageRating; }
+        }
+        //
+        //  Wire Type
         public ElectricalWireTypeEnum ElectricalWireType
         {
             set => _ElectricalWireType = value;
-            get
-            {
-                return _ElectricalWireType;
-            }
+            get { return _ElectricalWireType; }
         }
         //
         //  Dimensions
@@ -157,57 +156,37 @@ namespace Electronics
         public Double Length
         {
             set => _Length = value;
-            get
-            {
-                return _Length;
-            }
+            get { return _Length; }
         }
         //
         //  Gauge
         public int Gauge
         {
             set => _Gauge = value;
-            get
-            {
-                return _Gauge;
-            }
+            get { return _Gauge; }
         }
         //
         //  Insulation Thickness
         public Double InsulationThickness
         {
             set => _InsulationThickness = value;
-            get
-            {
-                return _InsulationThickness;
-            }
+            get { return _InsulationThickness; }
         }
-        //
-        //
-        //  
         //
         //  Owned & Owning Objects
         //
-        //  Materials
-        // 
         //  Conductor Material
         public Material ConductorMaterial
         {
             set => _ConductorMaterial = value;
-            get
-            {
-                return _ConductorMaterial;
-            }
+            get { return _ConductorMaterial; }
         }
-        // 
+        //
         //  Insulation Material
         public Material InsulationMaterial
         {
             set => _InsulationMaterial = value;
-            get
-            {
-                return _InsulationMaterial;
-            }
+            get { return _InsulationMaterial; }
         }
         #endregion
         //  *****************************************************************************************
@@ -218,7 +197,18 @@ namespace Electronics
         //
         //  ************************************************************
         #region
-
+        //
+        //  To JSON
+        public string ToJson()
+        {
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+        }
+        //
+        //  From JSON
+        public static ElectricWire? FromJson(string json)
+        {
+            return JsonSerializer.Deserialize<ElectricWire>(json);
+        }
         #endregion
         //  *****************************************************************************************
 

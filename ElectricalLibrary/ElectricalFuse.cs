@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Electronics;
+using System.Text.Json;
 using CAD;
 
 namespace Electrical
@@ -14,6 +10,7 @@ namespace Electrical
         //  DECLARATIONS
         //
         //  ************************************************************
+        #region
         //
         //  Identification
         private String _Make;
@@ -27,18 +24,24 @@ namespace Electrical
         private CAD_Dimension _Width;
         private CAD_Dimension _Height;
         //
+        //  Dimension List
+        private List<CAD_Dimension> _MyDimensions;
+        //
         //  Physical Properties
         private CAD_Parameter _Weight;
         private String _WireGauge;
+        private FuseTypeEnum _FuseType;
         //
         //  Performance
-        private CAD_Parameter _MaxInputCurrent;  // ohms
-        private CAD_Parameter _InputVoltage;  //  Volts
+        private CAD_Parameter _MaxInputCurrent;  //  Amps
+        private CAD_Parameter _InputVoltage;     //  Volts
+        private CAD_Parameter _TripTime;         //  ms (response time at rated current)
         //
         //  Owned & Owning Objects
         //
         //  Connector
         private ElectricalConnector _MyConnector;
+        #endregion
         //  *****************************************************************************************
 
 
@@ -46,7 +49,9 @@ namespace Electrical
         //  INITIALIZATIONS
         //
         //  ************************************************************
+        #region
 
+        #endregion
         //  *****************************************************************************************
 
 
@@ -54,7 +59,17 @@ namespace Electrical
         //  ENUMERATIONS
         //
         //  ************************************************************
-
+        #region
+        public enum FuseTypeEnum
+        {
+            Blade = 0,
+            Glass,
+            Ceramic,
+            Resettable,
+            HRC,
+            Other
+        }
+        #endregion
         //  *****************************************************************************************
 
 
@@ -62,10 +77,16 @@ namespace Electrical
         //  ELECTRICALFUSE CONSTRUCTOR
         //
         //  ************************************************************
+        #region
         public ElectricalFuse()
         {
-
+            _MyDimensions = new List<CAD_Dimension>();
+            _Make = string.Empty;
+            _Model = string.Empty;
+            _Version = string.Empty;
+            _WireGauge = string.Empty;
         }
+        #endregion
         //  *****************************************************************************************
 
 
@@ -73,6 +94,7 @@ namespace Electrical
         //  PROPERTIES
         //
         //  ************************************************************
+        #region
         //
         //  Identification
         //
@@ -80,96 +102,111 @@ namespace Electrical
         public String Make
         {
             set => _Make = value;
-            get
-            {
-                return _Make;
-            }
+            get { return _Make; }
         }
         //
         //  Model
         public String Model
         {
             set => _Model = value;
-            get
-            {
-                return _Model;
-            }
+            get { return _Model; }
         }
         //
         //  Version
         public String Version
         {
             set => _Version = value;
-            get
-            {
-                return _Version;
-            }
+            get { return _Version; }
         }
         //
         //  Data
         //
         //  Dimensions
+        //
+        //  Length
         public CAD_Dimension Length
         {
-            set => _Length = value;
-            get
+            set
             {
-                return _Length;
+                _Length = value;
+                this.MyDimensions.Add(_Length);
             }
+            get { return _Length; }
         }
+        //
+        //  Width
         public CAD_Dimension Width
         {
-            set => _Width = value;
-            get
+            set
             {
-                return _Width;
+                _Width = value;
+                this.MyDimensions.Add(_Width);
             }
+            get { return _Width; }
         }
+        //
+        //  Height
         public CAD_Dimension Height
         {
-            set => _Height = value;
-            get
+            set
             {
-                return _Height;
+                _Height = value;
+                this.MyDimensions.Add(_Height);
             }
+            get { return _Height; }
         }
-
-
+        //
+        //  Dimension List
+        public List<CAD_Dimension> MyDimensions
+        {
+            set => _MyDimensions = value;
+            get { return _MyDimensions; }
+        }
         //
         //  Physical Properties
+        //
+        //  Weight
         public CAD_Parameter Weight
         {
             set => _Weight = value;
-            get
-            {
-                return _Weight;
-            }
+            get { return _Weight; }
         }
+        //
+        //  Wire Gauge
         public String WireGauge
         {
             set => _WireGauge = value;
-            get
-            {
-                return _WireGauge;
-            }
+            get { return _WireGauge; }
+        }
+        //
+        //  Fuse Type
+        public FuseTypeEnum FuseType
+        {
+            set => _FuseType = value;
+            get { return _FuseType; }
         }
         //
         //  Performance
+        //
+        //  Maximum Input Current
         public CAD_Parameter MaxInputCurrent
         {
             set => _MaxInputCurrent = value;
-            get
-            {
-                return _MaxInputCurrent;
-            }
+            get { return _MaxInputCurrent; }
         }
+        //
+        //  Input Voltage
         public CAD_Parameter InputVoltage
         {
             set => _InputVoltage = value;
-            get
-            {
-                return _InputVoltage;
-            }
+            get { return _InputVoltage; }
+        }
+        //
+        //  Trip Time
+        public CAD_Parameter TripTime
+        {
+            set => _TripTime = value;
+            get { return _TripTime; }
         }
         //
         //  Owned & Owning Objects
@@ -178,11 +215,9 @@ namespace Electrical
         public ElectricalConnector MyConnector
         {
             set => _MyConnector = value;
-            get
-            {
-                return _MyConnector;
-            }
+            get { return _MyConnector; }
         }
+        #endregion
         //  *****************************************************************************************
 
 
@@ -190,7 +225,20 @@ namespace Electrical
         //  METHODS
         //
         //  ************************************************************
-
+        #region
+        //
+        //  To JSON
+        public string ToJson()
+        {
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+        }
+        //
+        //  From JSON
+        public static ElectricalFuse? FromJson(string json)
+        {
+            return JsonSerializer.Deserialize<ElectricalFuse>(json);
+        }
+        #endregion
         //  *****************************************************************************************
 
 
@@ -198,7 +246,9 @@ namespace Electrical
         //  EVENTS
         //
         //  ************************************************************
+        #region
 
+        #endregion
         //  *****************************************************************************************
     }
 }

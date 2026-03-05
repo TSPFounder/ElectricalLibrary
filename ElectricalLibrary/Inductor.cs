@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.Text.Json;
 using CAD;
-using SE_Library;
-using Structures;
 
 namespace Electrical
 {
@@ -15,12 +11,14 @@ namespace Electrical
         //
         //  ************************************************************
         #region
-        //  
-        //  Identification
-
         //
         //  Data
-        private CAD_Parameter _NominalInductance;
+        private CAD_Parameter _NominalInductance;       //  Henries
+        private CAD_Parameter _DCResistance;            //  Ohms (DCR)
+        private CAD_Parameter _MaxCurrent;              //  Amps (saturation current)
+        private CAD_Parameter _SelfResonantFrequency;   //  Hz
+        private CAD_Parameter _Tolerance;               //  %
+        private InductorTypeEnum _InductorType;
         //
         //  Owned & Owning Objects
 
@@ -43,7 +41,15 @@ namespace Electrical
         //
         //  ************************************************************
         #region
-
+        public enum InductorTypeEnum
+        {
+            Wirewound = 0,
+            Multilayer,
+            Ferrite,
+            Toroidal,
+            PowerInductor,
+            Other
+        }
         #endregion
         //  *****************************************************************************************
 
@@ -55,7 +61,6 @@ namespace Electrical
         #region
         public Inductor()
         {
-
         }
         #endregion
         //  *****************************************************************************************
@@ -67,14 +72,48 @@ namespace Electrical
         //  ************************************************************
         #region
         //
-        //  Identification
-
-        //  
         //  Data
+        //
+        //  Nominal Inductance
         public CAD_Parameter NominalInductance
         {
             set => _NominalInductance = value;
             get { return _NominalInductance; }
+        }
+        //
+        //  DC Resistance
+        public CAD_Parameter DCResistance
+        {
+            set => _DCResistance = value;
+            get { return _DCResistance; }
+        }
+        //
+        //  Maximum Current
+        public CAD_Parameter MaxCurrent
+        {
+            set => _MaxCurrent = value;
+            get { return _MaxCurrent; }
+        }
+        //
+        //  Self Resonant Frequency
+        public CAD_Parameter SelfResonantFrequency
+        {
+            set => _SelfResonantFrequency = value;
+            get { return _SelfResonantFrequency; }
+        }
+        //
+        //  Tolerance
+        public CAD_Parameter Tolerance
+        {
+            set => _Tolerance = value;
+            get { return _Tolerance; }
+        }
+        //
+        //  Inductor Type
+        public InductorTypeEnum InductorType
+        {
+            set => _InductorType = value;
+            get { return _InductorType; }
         }
         //
         //  Owned & Owning Objects
@@ -88,7 +127,18 @@ namespace Electrical
         //
         //  ************************************************************
         #region
-
+        //
+        //  To JSON
+        public string ToJson()
+        {
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+        }
+        //
+        //  From JSON
+        public static Inductor? FromJson(string json)
+        {
+            return JsonSerializer.Deserialize<Inductor>(json);
+        }
         #endregion
         //  *****************************************************************************************
 
