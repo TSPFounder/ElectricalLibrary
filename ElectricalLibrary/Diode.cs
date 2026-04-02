@@ -7,37 +7,6 @@ namespace Electrical
     public class Diode : ElectricalElement
     {
         //  *****************************************************************************************
-        //  DECLARATIONS
-        //
-        //  ************************************************************
-        #region
-        //
-        //  Data
-        private CAD_Parameter _ForwardVoltage;          //  Volts (Vf)
-        private CAD_Parameter _MaxReverseVoltage;       //  Volts (PIV)
-        private CAD_Parameter _MaxForwardCurrent;       //  Amps
-        private CAD_Parameter _MaxReverseCurrent;       //  Amps (leakage)
-        private CAD_Parameter _ReverseRecoveryTime;     //  ns
-        private CAD_Parameter _MaxPowerDissipation;     //  Watts
-        private DiodeTypeEnum _DiodeType;
-        //
-        //  Owned & Owning Objects
-
-        #endregion
-        //  *****************************************************************************************
-
-
-        //  ****************************************************************************************
-        //  INITIALIZATIONS
-        //
-        //  ************************************************************
-        #region
-
-        #endregion
-        //  *****************************************************************************************
-
-
-        //  *****************************************************************************************
         //  ENUMERATIONS
         //
         //  ************************************************************
@@ -50,6 +19,8 @@ namespace Electrical
             LED,
             TVS,
             Varactor,
+            FastRecovery,
+            Tunnel,
             Other
         }
         #endregion
@@ -75,55 +46,20 @@ namespace Electrical
         #region
         //
         //  Data
-        //
-        //  Forward Voltage
-        public CAD_Parameter ForwardVoltage
-        {
-            set => _ForwardVoltage = value;
-            get { return _ForwardVoltage; }
-        }
-        //
-        //  Maximum Reverse Voltage
-        public CAD_Parameter MaxReverseVoltage
-        {
-            set => _MaxReverseVoltage = value;
-            get { return _MaxReverseVoltage; }
-        }
-        //
-        //  Maximum Forward Current
-        public CAD_Parameter MaxForwardCurrent
-        {
-            set => _MaxForwardCurrent = value;
-            get { return _MaxForwardCurrent; }
-        }
-        //
-        //  Maximum Reverse Current
-        public CAD_Parameter MaxReverseCurrent
-        {
-            set => _MaxReverseCurrent = value;
-            get { return _MaxReverseCurrent; }
-        }
-        //
-        //  Reverse Recovery Time
-        public CAD_Parameter ReverseRecoveryTime
-        {
-            set => _ReverseRecoveryTime = value;
-            get { return _ReverseRecoveryTime; }
-        }
-        //
-        //  Maximum Power Dissipation
-        public CAD_Parameter MaxPowerDissipation
-        {
-            set => _MaxPowerDissipation = value;
-            get { return _MaxPowerDissipation; }
-        }
-        //
-        //  Diode Type
-        public DiodeTypeEnum DiodeType
-        {
-            set => _DiodeType = value;
-            get { return _DiodeType; }
-        }
+        public CAD_Parameter ForwardVoltage { get; set; }           //  Volts (Vf)
+        public CAD_Parameter MaxReverseVoltage { get; set; }        //  Volts (PIV)
+        public CAD_Parameter MaxForwardCurrent { get; set; }        //  Amps (If)
+        public CAD_Parameter MaxReverseCurrent { get; set; }        //  Amps (leakage, Ir)
+        public CAD_Parameter MaxSurgeCurrent { get; set; }          //  Amps (IFSM)
+        public CAD_Parameter ReverseRecoveryTime { get; set; }      //  ns (trr)
+        public CAD_Parameter MaxPowerDissipation { get; set; }      //  Watts
+        public CAD_Parameter JunctionCapacitance { get; set; }      //  pF (Cj)
+        public CAD_Parameter ZenerVoltage { get; set; }             //  Volts (Vz)
+        public CAD_Parameter BreakdownVoltage { get; set; }         //  Volts (Vbr)
+        public CAD_Parameter DynamicResistance { get; set; }        //  Ohms (rd)
+        public CAD_Parameter Tolerance { get; set; }                //  %
+        public CAD_Parameter TemperatureCoefficient { get; set; }   //  mV/°C
+        public DiodeTypeEnum DiodeType { get; set; }
         //
         //  Owned & Owning Objects
 
@@ -136,6 +72,51 @@ namespace Electrical
         //
         //  ************************************************************
         #region
+        //
+        //  Calculate Power Dissipation: P = Vf × If
+        public Double CalculatePowerDissipation(Double forwardCurrent)
+        {
+            if (ForwardVoltage == null || !ForwardVoltage.TryGetDouble(out double vf))
+                return 0d;
+
+            return vf * forwardCurrent;
+        }
+        //
+        //  Calculate Series Resistor: R = (Vs - Vf) / If
+        public Double CalculateSeriesResistor(Double supplyVoltage, Double desiredCurrent)
+        {
+            if (ForwardVoltage == null || !ForwardVoltage.TryGetDouble(out double vf) || desiredCurrent <= 0)
+                return 0d;
+
+            return (supplyVoltage - vf) / desiredCurrent;
+        }
+        //
+        //  Check if forward current is within maximum rating
+        public Boolean IsWithinCurrentRating(Double forwardCurrent)
+        {
+            if (MaxForwardCurrent == null || !MaxForwardCurrent.TryGetDouble(out double limit))
+                return true;
+
+            return forwardCurrent <= limit;
+        }
+        //
+        //  Check if reverse voltage is within PIV rating
+        public Boolean IsWithinVoltageRating(Double reverseVoltage)
+        {
+            if (MaxReverseVoltage == null || !MaxReverseVoltage.TryGetDouble(out double limit))
+                return true;
+
+            return reverseVoltage <= limit;
+        }
+        //
+        //  Calculate Forward Current: If = (Vs - Vf) / R
+        public Double CalculateForwardCurrent(Double supplyVoltage, Double seriesResistance)
+        {
+            if (ForwardVoltage == null || !ForwardVoltage.TryGetDouble(out double vf) || seriesResistance <= 0)
+                return 0d;
+
+            return (supplyVoltage - vf) / seriesResistance;
+        }
         //
         //  To JSON
         public string ToJson()
