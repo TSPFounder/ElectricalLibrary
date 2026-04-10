@@ -19,6 +19,7 @@ namespace Electrical
         private CAD_Parameter _MaxVoltage;              //  Volts
         private CAD_Parameter _TemperatureCoefficient;  //  ppm/°C (TCR)
         private ResistorTypeEnum _ResistorType;
+        private Boolean _IsVariable;
         //
         //  Owned & Owning Objects
 
@@ -114,6 +115,13 @@ namespace Electrical
         {
             set => _ResistorType = value;
             get { return _ResistorType; }
+        }
+        //
+        //  Is Variable (e.g. potentiometer, rheostat)
+        public Boolean IsVariable
+        {
+            set => _IsVariable = value;
+            get { return _IsVariable; }
         }
         //
         //  Owned & Owning Objects

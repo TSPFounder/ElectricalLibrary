@@ -20,6 +20,7 @@ namespace Electrical
         private CAD_Parameter _Tolerance;               //  %
         private CAD_Parameter _TemperatureCoefficient;  //  ppm/°C
         private CapacitorTypeEnum _CapacitorType;
+        private Boolean _IsVariable;
         //
         //  Owned & Owning Objects
 
@@ -122,6 +123,13 @@ namespace Electrical
         {
             set => _CapacitorType = value;
             get { return _CapacitorType; }
+        }
+        //
+        //  Is Variable (e.g. trimmer, varicap)
+        public Boolean IsVariable
+        {
+            set => _IsVariable = value;
+            get { return _IsVariable; }
         }
         //
         //  Owned & Owning Objects

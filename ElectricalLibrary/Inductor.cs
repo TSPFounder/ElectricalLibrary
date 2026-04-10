@@ -19,6 +19,7 @@ namespace Electrical
         private CAD_Parameter _SelfResonantFrequency;   //  Hz
         private CAD_Parameter _Tolerance;               //  %
         private InductorTypeEnum _InductorType;
+        private Boolean _IsVariable;
         //
         //  Owned & Owning Objects
 
@@ -114,6 +115,13 @@ namespace Electrical
         {
             set => _InductorType = value;
             get { return _InductorType; }
+        }
+        //
+        //  Is Variable (e.g. slug-tuned, roller inductor)
+        public Boolean IsVariable
+        {
+            set => _IsVariable = value;
+            get { return _IsVariable; }
         }
         //
         //  Owned & Owning Objects
